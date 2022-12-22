@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.db.models import Avg
@@ -11,7 +12,6 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken
-from django.contrib.auth import get_user_model
 
 from api.filters import TitlesFilter
 from api.mixins import ListCreateDestroyViewSet
@@ -23,7 +23,6 @@ from api.serializers import (CategorySerializer, CommentSerializer,
                              TitleSerializer, TokenSerializer,
                              UserEditSerializer, UserSerializer)
 from reviews.models import Category, Genre, Review, Title
-
 
 User = get_user_model()
 
@@ -116,13 +115,15 @@ class UserViewSet(viewsets.ModelViewSet):
         if request.method == "GET":
             serializer = self.get_serializer(user)
             return Response(serializer.data, status=status.HTTP_200_OK)
-        elif request.method == "PATCH":
+
+        if request.method == "PATCH":
             serializer = self.get_serializer(
                 user, data=request.data, partial=True
             )
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
+
         return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
