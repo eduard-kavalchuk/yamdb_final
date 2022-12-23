@@ -150,3 +150,7 @@ static/
 posts/static/
 media/
 
+# Terraform files
+secrets.sh
+.terraform*
+terraform.*
