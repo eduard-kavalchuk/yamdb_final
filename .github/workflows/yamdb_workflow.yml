@@ -12,9 +12,8 @@ jobs:
       with:
         python-version: 3.7
         script: |
-          touch .env
-          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-          echo DEBUG=${{ secrets.DEBUG }} >> .env
+          export SECRET_KEY=${{ secrets.SECRET_KEY }}
+          export DEBUG=${{ secrets.DEBUG }}
 
     - name: Install dependencies
       run: | 
