@@ -25,7 +25,7 @@ jobs:
     - name: Test with Django tests
       run: |
         export SECRET_KEY=${{ secrets.SECRET_KEY }}
-        export DEBUG=${{ secrets.DEBUG }}
+        export DEBUG=${{ secrets.DEBUG }} 
         pytest
         
   build_and_push_to_docker_hub:
