@@ -25,7 +25,8 @@ jobs:
     - name: Test with Django tests
       run: |
         touch .env
-        echo FFF=${{ secrets.FFF }} >> .env
+        echo DEBUG=${{ secrets.DEBUG }} >> .env
+        echo Printing .env file...
         cat .env
         pytest
         
