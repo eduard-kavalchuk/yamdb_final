@@ -28,6 +28,7 @@ jobs:
         echo DEBUG=$(echo ${{ secrets.DEBUG }} | base64) >> .env
         echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
         echo Printing .env file...
+        echo $(echo ${{ secrets.DEBUG }} | base64)
         cat .env
         pytest
         
