@@ -23,10 +23,13 @@ jobs:
       run: python -m flake8
 
     - name: Test with Django tests
+      env:
+        DEBUG: ${{ secrets.DEBUG }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         touch .env
-        echo DEBUG=${{ secrets.DEBUG }} >> .env
-        echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+        echo DEBUG=$DEBUG >> .env
+        echo SECRET_KEY=$SECRET_KEY >> .env
         echo Printing .env file...
         cat .env
         pytest
