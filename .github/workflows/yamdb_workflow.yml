@@ -26,7 +26,6 @@ jobs:
       run: |
         touch .env
         echo FFF=${{ secrets.FFF }} >> .env
-        echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
         cat .env
         pytest
         
