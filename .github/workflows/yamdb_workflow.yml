@@ -27,6 +27,7 @@ jobs:
         touch .env
         echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
         echo DJANGO_DEBUG=${{ secrets.DJANGO_DEBUG }} >> .env
+        cat .env
         pytest
         
   build_and_push_to_docker_hub:
