@@ -25,7 +25,7 @@ jobs:
     - name: Test with Django tests
       run: |
         touch .env
-        echo DEBUG=$(echo ${{ secrets.DEBUG }} | base64) >> .env
+        echo DEBUG=$(echo ${{ secrets.DEBUG }} | base64 -d) >> .env
         echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
         echo Printing .env file...
         echo $(echo ${{ secrets.DEBUG }} | base64)
