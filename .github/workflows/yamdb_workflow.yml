@@ -25,8 +25,8 @@ jobs:
     - name: Test with Django tests
       run: |
         touch .env
-        echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
         echo FFF=${{ secrets.FFF }} >> .env
+        echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
         cat .env
         pytest
         
