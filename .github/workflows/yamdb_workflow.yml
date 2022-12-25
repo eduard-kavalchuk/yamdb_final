@@ -23,13 +23,7 @@ jobs:
       run: python -m flake8
 
     - name: Test with Django tests
-      run: |
-        touch .env
-        echo DEBUG=${{ secrets.DEBUG }} >> .env
-        echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-        echo Printing .env file...
-        cat .env
-        pytest
+      run: pytest
         
   build_and_push_to_docker_hub:
     name: Build a Docker image of a web application and push it to Docker Hub
